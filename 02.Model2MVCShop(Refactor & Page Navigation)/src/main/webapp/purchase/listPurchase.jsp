@@ -6,8 +6,7 @@
 <%@ page import="com.model2.mvc.common.*" %>
 
 <%
-	List<Purchase> list=(List<Purchase>)request.getAttribute("list");
-	Search search=(Search)request.getAttribute("search");
+	List<Purchase> list=(List<Purchase>)request.getAttribute("map");
 	Page resultPage=(Page)request.getAttribute("resultPage");
 
 %>
@@ -68,7 +67,6 @@ function fncGetPurchaseList(){
 		<td colspan="11" bgcolor="808285" height="1"></td>
 	</tr>
 	<% 	
-		int no=list.size();
 		for(int i=0; i<list.size(); i++) {
 			Purchase purchase = (Purchase)list.get(i);
 			User user = (User)purchase.getBuyer();
@@ -76,7 +74,7 @@ function fncGetPurchaseList(){
 	%>
 	<tr class="ct_list_pop">
 		<td align="center">
-			<a href="/getPurchase.do?tranNo=<%= purchase.getTranNo() %>"><%=no--%></a>
+			<a href="/getPurchase.do?tranNo=<%= purchase.getTranNo() %>"><%=i+1%></a>
 		</td>
 		<td></td>
 		<td align="left">

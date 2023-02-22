@@ -24,7 +24,7 @@ public class ListPurchaseAction extends Action {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-Search search=new Search();
+		Search search=new Search();
 		
 		int currentPage=1;
 		if(request.getParameter("currentPage") != null && request.getParameter("currentPage").equals("")){
@@ -46,7 +46,7 @@ Search search=new Search();
 		String userId = user.getUserId();
 		PurchaseService service=new PurchaseServiceImpl();
 		Map<String,Object> map=service.getPurchaseList(search, userId);
-		
+		System.out.println();
 		Page resultPage	= 
 			new Page( currentPage, ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
 		System.out.println("ListUserAction ::"+resultPage);
@@ -55,7 +55,8 @@ Search search=new Search();
 		request.setAttribute("resultPage", resultPage);
 		request.setAttribute("search", search);
 		
-		System.out.println(map.get("list"));
+		System.out.println("request에 담긴 list"+map.get("list"));
+		System.out.println("request에 담긴 resultPage"+resultPage);
 		
 		return "forward:/purchase/listPurchase.jsp";
 	}

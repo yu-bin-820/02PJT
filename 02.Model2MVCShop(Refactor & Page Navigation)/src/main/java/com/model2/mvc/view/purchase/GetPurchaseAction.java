@@ -10,19 +10,15 @@ import com.model2.mvc.service.domain.*;
 
 public class GetPurchaseAction extends Action {
 
-	public GetPurchaseAction() {
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int tranNo = Integer.parseInt(request.getParameter("tranNo"));
 		
 		PurchaseService service = new PurchaseServiceImpl();
 		
-		Purchase product = (service.getPurchase(tranNo));
+		Purchase purchase = (service.getPurchase(tranNo));
 		
-		request.setAttribute("product", product);
+		request.setAttribute("purchase", purchase);
 		return "forward:/purchase/getPurchase.jsp";
 	}
 

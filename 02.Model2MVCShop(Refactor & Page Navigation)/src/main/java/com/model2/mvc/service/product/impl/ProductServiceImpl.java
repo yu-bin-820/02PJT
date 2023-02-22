@@ -22,9 +22,9 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public Product getProduct(int productNo) throws Exception {
+	public Product getProduct(int prodNo) throws Exception {
 		// TODO Auto-generated method stub
-		return productDAO.findProduct(productNo);
+		return productDAO.findProduct(prodNo);
 	}
 
 	@Override

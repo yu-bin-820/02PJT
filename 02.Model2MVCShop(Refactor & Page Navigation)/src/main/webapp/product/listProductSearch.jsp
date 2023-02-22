@@ -140,15 +140,15 @@ function fncGetProductList(currentPage){
 			<td align="left"><%= product.getRegDate() %></td>
 			<td></td>
 			<td align="left">
-			<%//if(product.getProTranCode().equals("0")||product.getProTranCode().equals("")||product.getProTranCode()==null){ %>
+			<%if(product.getProTranCode().equals("0")||product.getProTranCode().equals("")||product.getProTranCode()==null){ %>
 			판매중
-			<%//} else if(product.getProTranCode().equals("1")) {%>
+			<%} else if(product.getProTranCode().equals("1")) {%>
 				구매완료
-			<%//} else if(product.getProTranCode().equals("2")) {%>
+			<%} else if(product.getProTranCode().equals("2")) {%>
 				배송중
-			<%//} else if(product.getProTranCode().equals("3")) {%>
+			<%} else if(product.getProTranCode().equals("3")) {%>
 				배송완료
-			<%//} %>
+			<%} %>
 				
 			</td>		
 		</tr>
@@ -158,11 +158,11 @@ function fncGetProductList(currentPage){
 			<td align="center"><%=i+1%></td>
 			<td></td>
 			<td align="left">
-				<%//if(product.getProTranCode().equals("0")||product.getProTranCode()==null){ %>
+				<%if(product.getProTranCode().equals("0")||product.getProTranCode()==null){ %>
 				<a href="/getProduct.do?prodNo=<%=product.getProdNo() %>"><%= product.getProdName() %></a>
-				<%//} else { %>
-				<%//= product.getProdName() %>
-				<%//} %>
+				<%} else { %>
+				<%= product.getProdName() %>
+				<%} %>
 			</td>
 			<td></td>
 			<td align="left"><%= product.getPrice() %></td>
@@ -170,12 +170,12 @@ function fncGetProductList(currentPage){
 			<td align="left"><%= product.getRegDate() %></td>
 			<td></td>
 			<td align="left">
-			<%//if(product.getProTranCode().equals("0")||product.getProTranCode()==null){ %>
+			<%if(product.getProTranCode().equals("0")||product.getProTranCode()==null){ %>
 			판매중
-			<%//} else {%>
+			<%} else {%>
 
 				재고 없음
-				<%//} %>
+				<%} %>
 		</td>	
 	</tr>
 	

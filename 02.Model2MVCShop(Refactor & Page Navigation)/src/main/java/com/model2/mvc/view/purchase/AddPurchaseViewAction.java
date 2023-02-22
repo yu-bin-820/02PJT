@@ -23,18 +23,19 @@ public class AddPurchaseViewAction extends Action {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		System.out.println("AddPurchaseView로 넘어온 request:"+request);
-		System.out.println(request.getParameter("prod_no"));
-		int prodNo = Integer.parseInt(request.getParameter("prod_no"));
+		System.out.println(request.getParameter("prodNo"));
+		int prodNo = Integer.parseInt(request.getParameter("prodNo"));
 		
-		ProductService pservice = new ProductServiceImpl();
-		Product product = (pservice.getProduct(prodNo));
+		ProductService service = new ProductServiceImpl();
+		Product product = (service.getProduct(prodNo));
 		
+		System.out.println("다시AddPurchaseView에서 product"+product);
 		request.setAttribute("product", product);
 		
 		HttpSession session=request.getSession(); 
 
 		User user = (User)session.getAttribute("user");
-		System.out.println(user.toString());
+		System.out.println(user);
 		
 		request.setAttribute("user", user);
 		

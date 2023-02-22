@@ -36,12 +36,13 @@ public class ProductDAO {
 	
 	
 	public Product findProduct(int prodNo) throws Exception {
+		System.out.println("Dao¿¡ findProdcut");
 		Connection con = DBUtil.getConnection();
 		String sql = "select * from product where prod_no=?";
 		PreparedStatement stmt = con.prepareStatement(sql);
 		stmt.setInt(1, prodNo);
 		ResultSet rs = stmt.executeQuery();
-		
+		System.out.println(rs);
 		Product product = null;
 		while(rs.next()) {
 			product = new Product();
@@ -129,6 +130,7 @@ public class ProductDAO {
 			product.setProdDetail(rs.getString("PROD_DETAIL"));
 			product.setManuDate(rs.getString("MANUFACTURE_DAY"));
 			product.setFileName(rs.getString("IMAGE_FILE"));
+			product.setProTranCode(rs.getString("tran_status_code").trim());
 			
 			list.add(product);
 		}

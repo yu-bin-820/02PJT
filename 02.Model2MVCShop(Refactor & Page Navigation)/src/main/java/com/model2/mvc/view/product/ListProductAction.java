@@ -49,7 +49,7 @@ public class ListProductAction extends Action{
 		request.setAttribute("list", map.get("list"));
 		request.setAttribute("search", search);
 		request.setAttribute("resultPage", resultPage);
-		
+		System.out.println("jsp≥—∞‹¡Ÿ "+map.get("list"));
 		if(request.getParameter("menu").equals("manage")) {
 			
 			return "forward:/product/listProduct.jsp";

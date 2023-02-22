@@ -112,7 +112,7 @@ function fncGetProductList(currentPage){
 	</tr>
 	<%
 			for(int i=0; i<list.size(); i++) {
-			Product vo1 = list.get(i);
+			Product product = list.get(i);
 	%>
 		
 	<tr class="ct_list_pop">
@@ -120,18 +120,25 @@ function fncGetProductList(currentPage){
 		<td></td>
 				
 		<td align="left">
-		<a href="/updateProductView.do?prodNo=<%=vo1.getProdNo()%>"><%=vo1.getProdName() %></a>
+		<a href="/updateProductView.do?prodNo=<%=product.getProdNo()%>"><%=product.getProdName() %></a>
 		</td>
 		
 		<td></td>
-		<td align="left"><%=vo1.getPrice() %></td>
+		<td align="left"><%=product.getPrice() %></td>
 		<td></td>
-		<td align="left"><%=vo1.getRegDate() %></td>
+		<td align="left"><%=product.getRegDate() %></td>
 		<td></td>
 		<td align="left">
-		
+			<%if (product.getProTranCode().equals("0")) {%>
 			판매중
-		<% } %>
+			<%}else if(product.getProTranCode().equals("1")){  %>
+			구매완료 	
+					<a href="/updateTranCodeByProd.do?prodNo=<%=product.getProdNo() %>&tranCode=2">배송하기</a>
+			<%} else if(product.getProTranCode().equals("2")) {%>
+			배송중
+			<%} else if(product.getProTranCode().equals("3")) {%>
+			배송완료
+			<%}} %>
 		</td>	
 	</tr>
 	
